@@ -1,0 +1,14 @@
+---
+- name: Install/Configure a Proxy Playbook
+  hosts: proxy
+  tasks:
+    - name: Register as user credentials into given environment 
+      redhat_subscription:
+        state: present
+        username: "{{ rhsm_username }}"
+        password: "{{ rhsm_password }}"
+        autosubscribe: yes
+
+    - name: Include ansible-squid
+      include_role:
+        name: mrlesmithjr.squid

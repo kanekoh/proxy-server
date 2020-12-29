@@ -1,0 +1,15 @@
+all:
+  children:
+    proxy:
+      hosts:
+        <put your proxy server ips>
+  vars:
+    # Uncomment if you execute ansible-playbook localy.
+    #ansible_connection: local
+    ansible_become: true
+
+    rhsm_username: <REPLACE_ME>
+    rhsm_password: <REPLACE_ME>
+    squid_acl_localnet:
+    - 10.0.0.0/16
+    - 127.0.0.1
