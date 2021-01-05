@@ -12,3 +12,16 @@
     - name: Include ansible-squid
       include_role:
         name: mrlesmithjr.squid
+
+    - name: Start squid
+      systemd:
+        name: squid
+        enabled: true
+        state: restarted
+
+    - name: Open Firewall
+      firewalld:
+        port: 3128/tcp
+        permanent: true
+        immediate: true
+        state: enabled
